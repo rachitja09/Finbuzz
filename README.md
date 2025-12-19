@@ -15,3 +15,7 @@ If your editor flags missing imports for optional packages (plotly, yfinance, va
 Notes
 - Heavy dependencies (yfinance, plotly, vaderSentiment, pandas_ta) are optional and guarded so the project can be imported and tested in CI without installing them all.
 - To enable full UI, install the optional packages listed in `requirements.txt`.
+
+App is now deployed at - https://finbuzz-production.up.railway.app/
+
+
