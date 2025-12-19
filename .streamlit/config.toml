@@ -9,6 +9,9 @@ font="sans serif"
 [server]
 headless = true
 enableCORS = false
+enableXsrfProtection = true
+port = 8501
+address = "0.0.0.0"
 
 [global]
 # reduce telemetry
