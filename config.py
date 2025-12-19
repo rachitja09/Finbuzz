@@ -54,7 +54,8 @@ def _get_secret(key: str) -> Optional[str]:
     try:
         # Accessing st.secrets can raise when Streamlit isn't running (tests/CI)
         return st.secrets[key]
-    except (KeyError, RuntimeError, AttributeError):
+    except Exception:
+        # Catch all exceptions including StreamlitSecretNotFoundError
         return os.getenv(key)
 
 
