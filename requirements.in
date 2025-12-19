@@ -1,0 +1,6 @@
+streamlit
+yfinance
+plotly
+vaderSentiment
+streamlit-autorefresh
+pip-tools

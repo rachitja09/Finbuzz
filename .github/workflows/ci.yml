@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    - cron: '0 6 * * 0' # weekly at 06:00 UTC on Sundays
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements-ci.txt ]; then pip install -r requirements-ci.txt; fi
+          pip install ruff pytest black pyright
+      - name: Verify secrets not tracked
+        run: python scripts/verify_no_secrets.py
+      - name: Lint (ruff)
+        run: ruff check .
+      - name: Type check (pyright)
+        run: |
+          if command -v pyright >/dev/null 2>&1; then pyright; else echo 'pyright not installed'; fi
+      - name: Format check (black)
+        run: black --check .
+      - name: Run tests
+        run: |
+          pytest -q
+          echo "{\"ci_passed\": true, \"ts\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" > ci_status.json
+      - name: Upload CI status
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: ci-status
+          path: ci_status.json

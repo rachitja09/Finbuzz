@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+ENV/
+.venv-1/
+.venv-2/
+*.env
+*.egg-info/
+backups/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Docker
+*.log
+dist/
+build/
+
+# Jupyter
+*.ipynb_checkpoints/
+
+# Cache directories
+.http_cache/
+.ruff_cache/
+.cache/
+.queue/
+.pytest_cache/

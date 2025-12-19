@@ -1,0 +1,9 @@
+pytest
+ruff
+streamlit
+pandas
+numpy
+pandas_ta
+plotly
+requests
+vaderSentiment

@@ -1,0 +1,18 @@
+# Optional, heavier dependencies for full UI, streaming, and NLP
+yfinance
+plotly
+networkx
+pandas_ta
+vaderSentiment
+alpaca-trade-api
+websocket-client
+newsapi-python
+beautifulsoup4
+newspaper3k
+praw
+snscrape
+tweepy
+streamlit-autorefresh
+scikit-learn
+spacy
+transformers
